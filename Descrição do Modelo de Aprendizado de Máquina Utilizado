@@ -1,0 +1,6 @@
+Para este projeto, o foco não está em modelos de aprendizado de máquina, mas em análise de séries temporais. Usaremos métodos de suavização como médias móveis para identificar tendências e sazonalidades.
+
+Técnicas Aplicadas:
+
+Médias Móveis: Suavização de curto e longo prazo para identificar tendências.
+Decomposição de Séries Temporais: Identificação de componentes sazonais e de tendência
