@@ -1,0 +1,5 @@
+Passos para Análise Exploratória:
+
+Carregar e Visualizar os Dados: Leitura do arquivo trend_over_time.csv e visualização das primeiras linhas.
+Estatísticas Descritivas: Obtenção de estatísticas básicas das variáveis.
+Visualização: Criação de gráficos de linha para visualizar a evolução da popularidade das linguagens ao longo do tempo.
