@@ -1,0 +1,6 @@
+Passos para Pré-processamento:
+
+Leitura do Arquivo CSV: Carregar o arquivo CSV usando pandas.
+Conversão de Datas: Converter a coluna de datas para o formato datetime.
+Resample e Agregação: Resampling dos dados para médias mensais e cálculo do desvio padrão.
+Tratamento de Dados Faltantes: Verificar e tratar dados faltantes.
