@@ -1,0 +1,73 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from statsmodels.tsa.seasonal import seasonal_decompose
+from io import StringIO
+import requests
+
+def carregar_dados(url):
+    try:
+        if 'drive.google.com' in url:
+            file_id = url.split('/')[-2]
+            download_url = f"https://drive.google.com/uc?id={file_id}"
+            response = requests.get(download_url).content
+            df = pd.read_csv(StringIO(response.decode('utf-8')))
+        else:
+            df = pd.read_csv(url)
+        return df
+    except Exception as e:
+        print(f"Erro ao carregar os dados: {e}")
+        return None
+
+def preprocessar_dados(df):
+    df['Date'] = pd.to_datetime(df['Date'])
+    df.set_index('Date', inplace=True)
+    return df
+
+def plotar_tendencias(df):
+    plt.figure(figsize=(14, 7))
+    plt.plot(df.index, df['Python'], label='Python', color='blue')
+    plt.plot(df.index, df['Java'], label='Java', color='red')
+    plt.plot(df.index, df['C++'], label='C++', color='green')
+    plt.title('Tendência de Popularidade das Linguagens de Programação')
+    plt.xlabel('Data')
+    plt.ylabel('Popularidade')
+    plt.legend()
+    plt.show()
+
+def suavizar_dados(df):
+    df['Python_smooth'] = df['Python'].rolling(window=12).mean()
+    df['Java_smooth'] = df['Java'].rolling(window=12).mean()
+    df['C++_smooth'] = df['C++'].rolling(window=12).mean()
+    return df
+
+def decompor_series_temporais(df):
+    result_python = seasonal_decompose(df['Python'].dropna(), model='additive', period=52)
+    result_java = seasonal_decompose(df['Java'].dropna(), model='additive', period=52)
+    result_cpp = seasonal_decompose(df['C++'].dropna(), model='additive', period=52)
+    
+    plt.figure(figsize=(14, 10))
+    plt.subplot(3, 1, 1)
+    plt.plot(result_python.trend, label='Tendência Python')
+    plt.legend()
+    plt.subplot(3, 1, 2)
+    plt.plot(result_java.trend, label='Tendência Java')
+    plt.legend()
+    plt.subplot(3, 1, 3)
+    plt.plot(result_cpp.trend, label='Tendência C++')
+    plt.legend()
+    plt.show()
+
+def main(url):
+    df = carregar_dados(url)
+    if df is not None:
+        df = preprocessar_dados(df)
+        plotar_tendencias(df)
+        df = suavizar_dados(df)
+        decompor_series_temporais(df)
+
+# URL do arquivo de dados
+url = "https://drive.google.com/file/d/1ZPJ1lw7O9NQ31JBJqSrt85eykvt6lAoq/view?usp=sharing"
+
+# Executar análise
+main(url)
