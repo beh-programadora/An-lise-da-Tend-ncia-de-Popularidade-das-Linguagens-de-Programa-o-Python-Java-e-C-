@@ -1,0 +1,28 @@
+# Relatório de Análise da Popularidade das Linguagens de Programação
+
+## Descrição do Problema e Contexto
+
+A análise visa estudar a evolução da popularidade das linguagens de programação Python, Java e C++ no período de abril de 2019 a abril de 2024. O objetivo é identificar tendências de longo prazo, padrões sazonais e variações na popularidade dessas linguagens.
+
+## Análise Exploratória dos Dados
+
+Os dados foram carregados e visualizados. A análise revelou as tendências de popularidade das linguagens ao longo do tempo, com gráficos de linha mostrando a evolução semanal.
+
+## Processo de Pré-processamento de Dados
+
+1. **Conversão de Datas:** A coluna de datas foi convertida para o formato datetime.
+2. **Resampling:** Dados foram agregados mensalmente.
+3. **Tratamento de Dados Faltantes:** Dados ausentes foram tratados adequadamente.
+
+## Modelo de Análise
+
+Não foram aplicados modelos de aprendizado de máquina, mas técnicas de análise de séries temporais foram utilizadas:
+- **Médias Móveis:** Para suavização e identificação de tendências.
+- **Decomposição de Séries Temporais:** Para identificar componentes sazonais e de tendência.
+
+## Avaliação dos Resultados
+
+1. **Tendências de Longo Prazo:** Observou-se uma tendência crescente na popularidade do Python, enquanto Java e C++ mostraram variações mais estáveis.
+2. **Padrões Sazonais:** Identificados padrões sazonais na popularidade, especialmente para Python, com picos e vales em determinados períodos.
+3. **Comparação de Linguagens:** Python foi consistentemente mais popular do que Java e C++.
+4. **Tendências de Popularidade:** Python apresentou uma clara tendência de crescimento, enquanto Java e C++ mostraram uma tendência mais estável
