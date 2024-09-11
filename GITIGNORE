@@ -1,0 +1,13 @@
+
+**3. .gitignore**
+
+```plaintext
+# Ignorar arquivos Python compilados
+*.pyc
+__pycache__/
+
+# Ignorar arquivos temporários
+*.log
+
+# Ignorar ambientes virtuais
+venv/
